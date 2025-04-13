@@ -78,8 +78,6 @@ public class PilhaSolicitacao {
         No atual = topo;
         System.out.println("Pilha Atual: ");
         while (atual != null) {
-            //System.out.print(atual.descricao + " ");
-            //System.out.println("Id:"+atual.id+" Descrição:"+atual.descricao+" Hora:"+atual.hora+" Data:"+atual.data);
             System.out.println("Id:"+atual.id +" "+atual.descricao+" "+atual.dataHora);
             atual = atual.proximo; // Move para o próximo nó
         }
