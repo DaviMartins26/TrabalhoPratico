@@ -1,4 +1,4 @@
-public class PilhaSolicitação {
+public class PilhaSolicitacao {
     // ID da solicitação, descrição, data e hora)
     class No {
         String id;
@@ -87,7 +87,7 @@ public class PilhaSolicitação {
     }
 
     public static void main(String[] args) {
-        PilhaSolicitação pilha = new PilhaSolicitação();
+        PilhaSolicitacao pilha = new PilhaSolicitacao();
   
         System.out.println("RODANDO PILHA");
 
