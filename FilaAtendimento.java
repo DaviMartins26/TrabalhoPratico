@@ -61,6 +61,11 @@ public class FilaAtendimento {
         No atual = inicio; // colocando isso aqui para de dar erro
 
         while (true) {
+            // caso chega no fim e não achar
+            if (atual.proximo == null){
+                System.out.println("ID" + " " + removerID + " " + "não presente na Fila");
+                return;
+            }
             // procura o que for igual, e garante que o proximo não é null
             // pq se for null é o fim da fila
             if(atual.proximo.id == removerID && atual.proximo != null){
@@ -70,14 +75,6 @@ public class FilaAtendimento {
                 return;
             }
 
-            // caso chega no fim e não achar, porem esta dando erro 
-            //Exception in thread "main" java.lang.NullPointerException: Cannot read field "id" because "atual.proximo" is null
-              //   at FilaAtendimento.removerFila(FilaAtendimento.java:66)
-              //   at FilaAtendimento.main(FilaAtendimento.java:123)
-            if (atual.proximo == null){
-                System.out.println("ID não presente na Fila");
-                return;
-            }
 
             atual = atual.proximo; // manda o atual pro proximo caso não entre nos IF acima
         }
