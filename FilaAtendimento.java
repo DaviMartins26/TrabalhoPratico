@@ -1,6 +1,3 @@
-// Codigo feito pra outra atividade
-
-
 public class FilaAtendimento {
     // Classe interna para representar um nó da lista
     class No {
@@ -20,6 +17,7 @@ public class FilaAtendimento {
 
     No inicio = null; // aponta pro inicio
     No fim = null; // aponta pro final
+
     // Método para inserir um elemento no final da lista
     public void insereFila(String id,String nome,String motivo) {
         No novoNo = new No( id, nome,motivo); // Cria um novo nó com o elemento fornecido
@@ -43,28 +41,58 @@ public class FilaAtendimento {
     }
 
     // -------------------------------------------------------------------------------------
-    // fazer este metodo de alguma maneira
+    // Esse metodo de comparação pode quebrar, pq to comparando strings com ==
     // -------------------------------------------------------------------------------------
-    public void removerFila(){
+    public void removerFila(String removerID){
         // fazer o metodo verificar null funcionar
         if (inicio == null) {
             System.out.println("Fila vazia. Nada para remover.");
             return;
         }
 
-        // System.out.println("Removendo ID: " + id+" "+nome+" "+motivo);
-        if (inicio == null){
-            System.out.println("Filha Vazia");
+        // se for igual
+        if (removerID == inicio.id){
+            System.out.println("\"Removendo ID: \" + inicio.id + \" \" + inicio.nome + \" \" + inicio.motivo");
+            inicio = inicio.proximo;
+            if (inicio == null) fim = null; // faz a fila ficar null novamente caso necessario
+            return;
         }
-        inicio = inicio.proximo; // Agora o inicio é o proximo no depois do inicio
-        if (inicio == null){
-            fim = null; // quando zerar a fila tem que ferar o final pra n se perder
+
+        No atual = inicio; // colocando isso aqui para de dar erro
+
+        while (true) {
+            // procura o que for igual, e garante que o proximo não é null
+            // pq se for null é o fim da fila
+            if(atual.proximo.id == removerID && atual.proximo != null){
+                System.out.println("Removendo ID: " + atual.proximo.id + " " + atual.proximo.nome + " " + atual.proximo.motivo);
+                atual.proximo = atual.proximo.proximo; // faz o proximo ser o proximo do atual(isso pode acontecer infinitamente)
+                if (atual.proximo == null) fim = atual; // assim o no é removido da fila
+                return;
+            }
+
+            // caso chega no fim e não achar, porem esta dando erro 
+            //Exception in thread "main" java.lang.NullPointerException: Cannot read field "id" because "atual.proximo" is null
+              //   at FilaAtendimento.removerFila(FilaAtendimento.java:66)
+              //   at FilaAtendimento.main(FilaAtendimento.java:123)
+            if (atual.proximo == null){
+                System.out.println("ID não presente na Fila");
+                return;
+            }
+
+            atual = atual.proximo; // manda o atual pro proximo caso não entre nos IF acima
         }
+        
     }
 
 
     // Método para exibir os elementos da lista (para teste)
     public void exibeFila() {
+        // fazer o metodo verificar null funcionar
+        if (inicio == null) {
+            System.out.println("Fila vazia. Nada para remover.");
+            return;
+        }
+        
         No atual = inicio;
         System.out.println("Fila Atual: ");
         while (atual != null) {
@@ -94,7 +122,9 @@ public class FilaAtendimento {
 
         // Exibindo os elementos da lista
         fila.exibeFila(); // 
+        fila.removerFila("CLI007");
+        fila.removerFila("CLI015"); // isso aqui da erro em atual.proximo
+
+        fila.exibeFila(); // 
     }
 }
-
-
