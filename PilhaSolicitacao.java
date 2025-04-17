@@ -28,15 +28,15 @@ public class PilhaSolicitacao {
     }
     
 
-    // Método para inserir um elemento no final da lista
+    // Método para inserir um elemento no final da pilha
     public void insereSolicitacao(String id,String descricao,String dataHora) {
         No novoNo = new No(id,descricao,dataHora); // Cria um novo nó com os dados
 
         if (topo == null) {
-            // Caso a lista esteja vazia, o início aponta para o novo nó
+            // Caso a pilha esteja vazia, o início aponta para o novo nó
             topo = novoNo;
         } else {
-            // Caso contrário, percorre a lista até o final
+            // Caso contrário, percorre a pilha até o final
             System.out.println("Inserindo solicitação Id:"+id+":"+descricao +" "+ dataHora);
             No atual = topo;
             topo = novoNo;
@@ -46,7 +46,6 @@ public class PilhaSolicitacao {
 
     // Atualizar esta função pra percorrer a pilha toda em busca de um ID pra remover este id (pelo menos foi oq entendi)
     public void removerPorId(String removerID) {
-        // não consegui chamar o metodo verficarVazio, java fica reclamando
         verificarVazio();
 
         // Caso o ID esteja no topo
@@ -58,7 +57,7 @@ public class PilhaSolicitacao {
     
         // Caso o ID não esteja no topo
         No atual = topo;
-        while (atual.proximo != null && atual.proximo.id != removerID) {
+        while (atual.proximo != null && atual.proximo.id != removerID) { // enquanto removerID não for igual ao proximo.id vai percorrer a pilha
             atual = atual.proximo;
         }
     
@@ -71,7 +70,7 @@ public class PilhaSolicitacao {
     }
     
 
-    // Método para exibir os elementos da lista (para teste)
+    // Método para exibir os elementos da lista 
     public void exibePilha() {
         No atual = topo;
         System.out.println("Pilha Atual: ");

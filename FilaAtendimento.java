@@ -46,16 +46,13 @@ public class FilaAtendimento {
     // -------------------------------------------------------------------------------------
     public void removerFila(String removerID){
         // fazer o metodo verificar null funcionar
-        if (inicio == null) {
-            System.out.println("Fila vazia. Nada para remover.");
-            return;
-        }
+        verificarFila(); // aparentemete funciona
 
-        // se for igual
+        // caso so haja um elemento a remover
         if (removerID == inicio.id){
             System.out.println("\"Removendo ID: \" + inicio.id + \" \" + inicio.nome + \" \" + inicio.motivo");
             inicio = inicio.proximo;
-            if (inicio == null) fim = null; // faz a fila ficar null novamente caso necessario
+            if (inicio == null) fim = null; // faz a fila ficar null novamente 
             return;
         }
 
@@ -86,7 +83,6 @@ public class FilaAtendimento {
     // Método para exibir os elementos da lista (para teste)
     public void exibeFila() {
         // fazer o metodo verificar null funcionar
-
         verificarFila(); // aparentemete funciona
 
         No atual = inicio;
@@ -119,7 +115,7 @@ public class FilaAtendimento {
         // Exibindo os elementos da lista
         fila.exibeFila(); // 
         fila.removerFila("CLI007");
-        fila.removerFila("CLI015"); // isso aqui da erro em atual.proximo
+        fila.removerFila("CLI015"); // elemento não presente na Fila
 
         fila.exibeFila(); // 
     }
