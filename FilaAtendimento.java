@@ -48,11 +48,11 @@ public class FilaAtendimento {
         // fazer o metodo verificar null funcionar
         verificarFila(); // aparentemete funciona
 
-        // caso so haja um elemento a remover
+        // caso o primeiro elemento da fila seja o informado em RemoverID
         if (removerID == inicio.id){
             System.out.println("\"Removendo ID: \" + inicio.id + \" \" + inicio.nome + \" \" + inicio.motivo");
             inicio = inicio.proximo;
-            if (inicio == null) fim = null; // faz a fila ficar null novamente 
+            if (inicio == null) fim = null;
             return;
         }
 
