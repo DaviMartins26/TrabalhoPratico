@@ -37,7 +37,8 @@ public class FilaAtendimento {
         if (inicio == null){
             System.out.println("Fila vazia.Nada pra remover");
             return; 
-        }
+            
+        }else{ System.out.println("Fila com Elementos");}
     }
 
     // -------------------------------------------------------------------------------------
@@ -85,11 +86,9 @@ public class FilaAtendimento {
     // Método para exibir os elementos da lista (para teste)
     public void exibeFila() {
         // fazer o metodo verificar null funcionar
-        if (inicio == null) {
-            System.out.println("Fila vazia. Nada para remover.");
-            return;
-        }
-        
+
+        verificarFila(); // aparentemete funciona
+
         No atual = inicio;
         System.out.println("Fila Atual: ");
         while (atual != null) {

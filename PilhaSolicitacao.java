@@ -47,10 +47,8 @@ public class PilhaSolicitacao {
     // Atualizar esta função pra percorrer a pilha toda em busca de um ID pra remover este id (pelo menos foi oq entendi)
     public void removerPorId(String removerID) {
         // não consegui chamar o metodo verficarVazio, java fica reclamando
-        if (topo == null) {
-            System.out.println("Pilha vazia. Nada para remover.");
-            return;
-        }
+        verificarVazio();
+
         // Caso o ID esteja no topo
         if (topo.id == removerID) {
             System.out.println("Removendo o ID no topo: " + topo.id);
@@ -86,7 +84,7 @@ public class PilhaSolicitacao {
 
     public static void main(String[] args) {
         PilhaSolicitacao pilha = new PilhaSolicitacao();
-  
+        pilha.verificarVazio();
         System.out.println("RODANDO PILHA");
 
         // Inserindo elementos na lista
